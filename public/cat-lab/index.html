@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#fff8dc" />
+    <title>POKER CATS | Character Motion Lab</title>
+    <link rel="stylesheet" href="./cat-lab.css" />
+  </head>
+  <body>
+    <header class="lab-header">
+      <a class="back-link" href="/" aria-label="ゲームへ戻る">← GAME</a>
+      <div class="lab-title">
+        <p>CHARACTER MOTION LAB</p>
+        <h1><span>POKER</span> CATS <b>★</b></h1>
+        <small>4 CATS × 5 ACTIONS</small>
+      </div>
+      <button class="sequence-button" id="play-sequence" type="button">▶ ALL PLAY</button>
+    </header>
+
+    <main>
+      <section class="audition-layout" aria-labelledby="audition-title">
+        <article class="audition-card">
+          <div class="motion-stage is-playing" id="motion-stage" data-action="idle">
+            <span class="stage-burst" aria-hidden="true"></span>
+            <span class="action-stamp" id="action-stamp">READY!</span>
+            <span class="hiss-word" aria-hidden="true">シャー!</span>
+            <span class="impact-ring" aria-hidden="true"></span>
+            <span class="impact-star impact-star--1" aria-hidden="true">★</span>
+            <span class="impact-star impact-star--2" aria-hidden="true">★</span>
+            <span class="impact-star impact-star--3" aria-hidden="true">★</span>
+            <img class="hero-cat" id="hero-cat" alt="キジトラの待機ポーズ" />
+          </div>
+          <div class="character-caption">
+            <div>
+              <span class="caption-kicker">SELECTED CAT</span>
+              <h2 id="breed-ja">キジトラ</h2>
+              <p id="breed-en">MACKEREL TABBY</p>
+            </div>
+            <div class="state-chip">
+              <span id="state-ja">待機</span>
+              <b id="state-en">IDLE</b>
+            </div>
+          </div>
+        </article>
+
+        <aside class="control-card">
+          <div class="control-heading">
+            <span>01</span>
+            <div><p>CAT TYPE</p><h2>猫を選ぶ</h2></div>
+          </div>
+          <div class="breed-picker" id="breed-picker" role="group" aria-label="猫の種類"></div>
+
+          <div class="control-heading control-heading--actions">
+            <span>02</span>
+            <div><p>ACTION</p><h2>動きを試す</h2></div>
+          </div>
+          <div class="action-picker" id="action-picker" role="group" aria-label="アクション"></div>
+          <button class="random-button" id="random-button" type="button">↻ RANDOM CAT & ACTION</button>
+        </aside>
+      </section>
+
+      <section class="game-size-section" aria-labelledby="game-size-title">
+        <div class="section-heading">
+          <div><span>IN-GAME CHECK</span><h2 id="game-size-title">実際のアバターサイズ</h2></div>
+          <p>表情・耳・前足が小さくても読めるかを確認</p>
+        </div>
+        <div class="fighter-row">
+          <article class="fighter-card fighter-card--enemy">
+            <div class="fighter-avatar"><img class="synced-cat" alt="敵猫アバター" /></div>
+            <div class="fighter-copy"><small>CPU RIVAL</small><strong>CARD BOT</strong></div>
+            <div class="fighter-status">ACTION READY</div>
+          </article>
+          <article class="fighter-card fighter-card--player">
+            <div class="fighter-avatar"><img class="synced-cat" alt="プレイヤー猫アバター" /></div>
+            <div class="fighter-copy"><small>YOU</small><strong>PLAYER 1</strong></div>
+            <div class="fighter-status">ACTION READY</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="sprite-library" aria-labelledby="library-title">
+        <div class="section-heading">
+          <div><span>SPRITE LIBRARY</span><h2 id="library-title">全キャラクター・全表情</h2></div>
+          <p>静止画で造形と識別性を横並び比較</p>
+        </div>
+        <div class="library-grid" id="library-grid"></div>
+      </section>
+
+      <p class="lab-note">V1 DESIGN AUDITION — 採用後に、攻撃・被弾・敗北を複数フレーム化してゲーム本体へ接続します。</p>
+    </main>
+    <script src="./cat-lab.js"></script>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fff7df" />
+    <title>POKER DUEL — SOUND LAB</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand" aria-label="Poker Duel Sound Lab">
+          <span class="brand-poker">POKER</span><span class="brand-duel">DUEL</span>
+          <span class="lab-badge">SOUND LAB</span>
+        </div>
+        <div class="audio-status" id="audio-status" aria-live="polite">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="audio-status-text">音声はまだOFFです</span>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro-card" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow">PROTOTYPE AUDIO CONSOLE</p>
+            <h1 id="page-title">ゲームに入る音を、先に聴いてみる。</h1>
+            <p>
+              すべてブラウザ内で作る仮音です。PLAYERとENEMYを切り替えながら、
+              音の高さ・強さ・テンポの方向性を確認できます。
+            </p>
+          </div>
+          <button class="enable-button" id="enable-audio" type="button">
+            <span>音声を有効にする</span>
+            <small>最初に1回タップ</small>
+          </button>
+        </section>
+
+        <section class="control-bar" aria-label="サウンド設定">
+          <fieldset class="side-picker">
+            <legend>試聴する側</legend>
+            <div class="segmented-control">
+              <button type="button" class="side-button is-active" data-side="self" aria-pressed="true">
+                PLAYER
+              </button>
+              <button type="button" class="side-button" data-side="enemy" aria-pressed="false">
+                ENEMY
+              </button>
+            </div>
+          </fieldset>
+
+          <div class="volume-control">
+            <label for="master-volume">全体音量 <output id="volume-value">65%</output></label>
+            <div class="volume-row">
+              <button type="button" class="step-button" id="volume-down" aria-label="音量を5%下げる">−</button>
+              <input id="master-volume" type="range" min="0" max="100" value="65" step="1" />
+              <button type="button" class="step-button" id="volume-up" aria-label="音量を5%上げる">＋</button>
+            </div>
+          </div>
+
+          <div class="control-actions">
+            <button type="button" class="utility-button" id="mute-button" aria-pressed="false">MUTE</button>
+            <button type="button" class="danger-button" id="stop-all">STOP ALL</button>
+          </div>
+        </section>
+
+        <section class="now-playing" aria-labelledby="now-playing-title">
+          <div class="playing-copy">
+            <p class="eyebrow" id="playing-side">PLAYING AS PLAYER</p>
+            <h2 id="now-playing-title">音を選んでください</h2>
+            <p id="now-playing-description">ボタンを押すと、ここに音の役割と再生状態が表示されます。</p>
+          </div>
+          <canvas id="sound-visualizer" width="640" height="160" aria-label="再生中の音を表すビジュアライザー"></canvas>
+        </section>
+
+        <section class="sequence-section" aria-labelledby="sequence-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">QUICK SEQUENCES</p>
+              <h2 id="sequence-title">ゲームの流れで試す</h2>
+            </div>
+            <p>複数の音が続いた時のテンポを確認できます。</p>
+          </div>
+
+          <div class="sequence-grid">
+            <article class="sequence-card sequence-start">
+              <span class="sequence-kicker">MATCH OPEN</span>
+              <h3>START → 5 → 4 → 3 → 2 → 1 → GO</h3>
+              <p>START決定音から5秒カウントダウンまでを再生します。</p>
+              <div class="countdown-display" id="countdown-display" aria-live="polite">READY</div>
+              <div class="sequence-actions">
+                <button type="button" class="primary-action" data-sequence="start">START SEQUENCE</button>
+                <button type="button" class="secondary-action" id="skip-to-go">SKIP TO GO</button>
+              </div>
+            </article>
+
+            <article class="sequence-card">
+              <span class="sequence-kicker">CARD FLOW</span>
+              <h3>配札 → 役成立 → カード更新</h3>
+              <p>高速で繰り返すカード操作の音量バランスを確認します。</p>
+              <button type="button" class="primary-action" data-sequence="cards">PLAY CARD FLOW</button>
+            </article>
+
+            <article class="sequence-card">
+              <span class="sequence-kicker">SKILL CONTEST</span>
+              <h3>スキル出現 → 取得 → 発動</h3>
+              <p>中央の争奪通知から、選択中の側が取得する流れです。</p>
+              <button type="button" class="primary-action" data-sequence="skill">PLAY SKILL FLOW</button>
+            </article>
+
+            <article class="sequence-card sequence-attacks">
+              <span class="sequence-kicker">ATTACK LADDER</span>
+              <h3>2 HIT → 3 HIT → 4 HIT → 5 HIT</h3>
+              <p>使用カードが連続着弾する間隔と、役による重さを比較します。</p>
+              <button type="button" class="primary-action" data-sequence="attacks">PLAY ATTACKS</button>
+            </article>
+          </div>
+        </section>
+
+        <section aria-labelledby="catalog-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">SOUND CATALOG</p>
+              <h2 id="catalog-title">音を1つずつ試す</h2>
+            </div>
+            <p>同じボタンを何度押しても構いません。STOP ALLですべて止まります。</p>
+          </div>
+          <div class="sound-grid" id="sound-grid"></div>
+        </section>
+
+        <section class="history-card" aria-labelledby="history-title">
+          <div>
+            <p class="eyebrow">RECENT SOUNDS</p>
+            <h2 id="history-title">直近の再生</h2>
+          </div>
+          <ol id="sound-history" aria-live="polite">
+            <li class="history-empty">まだ再生されていません</li>
+          </ol>
+        </section>
+      </main>
+
+      <footer>
+        <p>仮音源 — Web Audio APIでリアルタイム合成</p>
+        <p><kbd>F</kbd> フルスクリーン切替 ・ <kbd>Esc</kbd> 終了</p>
+      </footer>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="./sound-engine.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

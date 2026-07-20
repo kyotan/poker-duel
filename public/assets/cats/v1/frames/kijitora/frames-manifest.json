@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "chroma_key": {
+    "hex": "#00FF00",
+    "rgb": [
+      0,
+      255,
+      0
+    ],
+    "threshold": 120.0
+  },
+  "rows": [
+    {
+      "state": "jumping",
+      "frames": [
+        "public/assets/cats/v1/frames/kijitora/jumping/00.png",
+        "public/assets/cats/v1/frames/kijitora/jumping/01.png",
+        "public/assets/cats/v1/frames/kijitora/jumping/02.png",
+        "public/assets/cats/v1/frames/kijitora/jumping/03.png",
+        "public/assets/cats/v1/frames/kijitora/jumping/04.png"
+      ],
+      "method": "components"
+    }
+  ]
+}

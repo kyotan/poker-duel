@@ -1,0 +1,22 @@
+{
+  "version": "poker-cats-v1",
+  "generationMode": "built-in imagegen with a shared canonical reference lineup",
+  "cell": { "width": 192, "height": 208 },
+  "stateOrder": ["idle", "attack", "hit", "hiss", "defeat"],
+  "stateFrameIndex": {
+    "idle": "00",
+    "attack": "01",
+    "hit": "02",
+    "hiss": "03",
+    "defeat": "04"
+  },
+  "breeds": [
+    { "id": "kijitora", "ja": "キジトラ", "en": "Mackerel Tabby" },
+    { "id": "chatora", "ja": "チャトラ", "en": "Orange Tabby" },
+    { "id": "white", "ja": "白猫", "en": "White Cat" },
+    { "id": "black", "ja": "黒猫", "en": "Black Cat" }
+  ],
+  "framePattern": "/assets/cats/v1/frames/{breed}/jumping/{index}.png",
+  "sourceLineupRepositoryPath": "docs/assets/poker-cats-v1/source/poker-cats-lineup.png",
+  "notes": "V1 uses one generated key pose per state plus transform/opacity CSS motion. Expand accepted states into multi-frame strips before final combat integration."
+}

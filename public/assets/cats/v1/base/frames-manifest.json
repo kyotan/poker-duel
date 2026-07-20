@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "chroma_key": {
+    "hex": "#00FF00",
+    "rgb": [
+      0,
+      255,
+      0
+    ],
+    "threshold": 86.0
+  },
+  "rows": [
+    {
+      "state": "waving",
+      "frames": [
+        "public/assets/cats/v1/base/kijitora.png",
+        "public/assets/cats/v1/base/chatora.png",
+        "public/assets/cats/v1/base/white.png",
+        "public/assets/cats/v1/base/black.png"
+      ],
+      "method": "components"
+    }
+  ]
+}
